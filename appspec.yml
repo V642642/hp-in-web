@@ -1,0 +1,26 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/www/hp-web
+hooks:
+  ApplicationStop:
+    #- location: codedeployScripts/app_stop.sh 
+    #  timeout: 30
+    #  runas: root
+  BeforeInstall:
+    - location: codedeployScripts/before_install.sh 
+      timeout: 60
+      runas: root
+  AfterInstall:
+    #- location: codedeployScripts/after_install.sh 
+    #  timeout: 30
+    #  runas: root
+  ApplicationStart:
+    - location: codedeployScripts/app_start.sh 
+      timeout: 180
+      runas: root
+  ValidateService:
+    #- location: codedeployScripts/validate_service.sh 
+    #  timeout: 30
+    #  runas: root

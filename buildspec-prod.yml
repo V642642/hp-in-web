@@ -1,0 +1,32 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 16
+      #installs dependencies into the node_modules/ directory
+      #- wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+      #- export NVM_DIR="$HOME/.nvm"
+      #- '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"'
+      #- '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"'
+      #- source ~/.bashrc
+      #- nvm install 16.14.2
+      #- nvm use 16.14.2
+      #- npm install
+    commands:
+      - n 16.15.0
+  pre_build:
+    commands:
+      #- npm install
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Compiling
+      #- npm run build
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      # Include only the files required for your application to run.
+artifacts:
+  files:
+    - '**/*'
+  name: hp-web-build-dev.zip
